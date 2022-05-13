@@ -15,8 +15,9 @@ fi
 
 ### Starting Node Version Manager (nvm)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && export NVM_BASE="/usr/local/opt/nvm" || export NVM_BASE="/opt/homebrew/opt/nvm" 
+[ -s "$NVM_BASE/nvm.sh" ] && \. "$NVM_BASE/nvm.sh"  # This loads nvm
+[ -s "$NVM_BASE/bash_completion" ] && \. "$NVM_BASE/bash_completion"  # This loads nvm bash_completion
 
 # Adding global require support -- Sublime Text and other apps
 export NODE_PATH="$(npm config get prefix)/lib/node_modules"
