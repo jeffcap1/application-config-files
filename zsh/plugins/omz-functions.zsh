@@ -1,3 +1,10 @@
+# take functions
+
+# mkcd is equivalent to takedir
+function mkcd takedir() {
+  mkdir -p $@ && cd ${@:$#}
+}
+
 function takeurl() {
   local data thedir
   data="$(mktemp)"
