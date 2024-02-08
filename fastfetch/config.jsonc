@@ -12,7 +12,7 @@
     "separator": "  ",
   },
   "logo": {
-    "type": "auto",
+    "type": "kitty",
   },
   "modules": [
     {
