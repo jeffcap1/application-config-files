@@ -1,10 +1,11 @@
 ### Starting colorls
 # Adding Ruby Gems to PATH
-export PATH=$PATH:/usr/local/opt/ruby/bin:$HOME/.gem/ruby/3.0.0/bin
+# export PATH=$PATH:/usr/local/opt/ruby/bin:$HOME/.gem/ruby/3.0.0/bin
+export PATH="$(brew --prefix)/opt/ruby/bin:$PATH"
 
 # Ruby Config for compilers
-export LDFLAGS="-L/usr/local/opt/ruby/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export LDFLAGS="-L$(brew --prefix)/opt/ruby/lib"
+export CPPFLAGS="-I$(brew --prefix)/opt/ruby/include"
 
 # Colorize ls output
 if [ -x "$(command -v colorls)" ]; then
