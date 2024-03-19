@@ -13,6 +13,7 @@
 - [colored-man-pages](https://github.com/ael-code/zsh-colored-man-pages)
 - [hacker-quotes](https://github.com/oldratlee/hacker-quotes)
 - [you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)
+- [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
 
 #### Plugins to Install with Brew
 
