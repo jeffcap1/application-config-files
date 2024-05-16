@@ -35,6 +35,14 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
 
 # fzf
+
+# Options to fzf command
+export FZF_COMPLETION_OPTS="--height 40% --layout reverse --info inline --border \
+    --preview 'bat {}' --preview-window up,1,border-horizontal \
+    --bind 'ctrl-/:change-preview-window(50%|hidden|)' \
+    --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'\
+"
+
 if [ -x "$(command -v fzf)" ]; then
   eval "$(fzf --zsh)"
 fi
