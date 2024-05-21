@@ -9,6 +9,7 @@ alias addkey='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
 alias vi="env TERM=wezterm nvim"
 alias nvim="env TERM=wezterm nvim"
 alias ff="fastfetch"
+alias gt="git tag -l | sort -Vr"
 
 # tmux
 alias ta='tmux attach -t'
