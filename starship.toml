@@ -22,12 +22,18 @@ $python\
 [](fg:teal bg:blue)\
 $docker_context\
 [](fg:blue bg:purple)\
-$time\
+$aws\
+$kubernetes\
+$gcloud\
 [ ](fg:purple)\
+ \
+$cmd_duration\
 $line_break$character"""
 
+# $time\
+
 # move the rest of the prompt to the right
-right_format = """$all"""
+# right_format = """$all"""
 
 palette = 'catppuccin_mocha'
 
@@ -154,8 +160,13 @@ format = '[[ $symbol( $context) ](fg:base bg:blue)]($style)'
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:peach"
+style = "bg:purple"
 format = '[[  $time ](fg:mantle bg:purple)]($style)'
+
+[aws]
+style = "bg:purple"
+symbol = "󰅟 "
+format = '[[ on $symbol($profile )(\($region\) )(\[$duration\] )](fg:mantle bg:purple)]($style)'
 
 [line_break]
 disabled = false
