@@ -8,6 +8,7 @@ alias e="fzf --preview 'bat -n --color=always {}' --preview-window right:wrap --
 # Default settigns
 export FZF_DEFAULT_OPT="--height 40% --layout reverse --info inline --border \
     --bind 'ctrl-/:change-preview-window(50%|hidden|)' \
+    --bind ctrl-f:page-down,ctrl-b:page-up
 "
 
 # Options to fzf command

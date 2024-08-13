@@ -21,3 +21,35 @@ eval "$(tmuxifier init -)"
 # fzf
 source ~/.zsh-config-settings/config/fzf.zsh
 
+# fzf-tab
+if [ ! -d ~/fzf-tab ]; then
+  echo "Cloning fzf-tab..."
+  git clone https://github.com/Aloxaf/fzf-tab ~/fzf-tab
+fi
+autoload -U compinit; compinit
+source ~/fzf-tab/fzf-tab.plugin.zsh
+source ~/.zsh-config-settings/config/fzf-tab.zsh
+
+# fzf-tab-sources
+if [ ! -d ~/fzf-tab-source ]; then
+  echo "Cloning fzf-tab-sources..."
+  git clone https://github.com/Freed-Wu/fzf-tab-source ~/fzf-tab-source
+fi
+source ~/fzf-tab-source/*.plugin.zsh
+
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/lesspipe" ]; then
+  brew install lesspipe
+fi
+
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/exiftool" ]; then
+  brew install exiftool
+fi
+
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/chafa" ]; then
+  brew install chafa
+fi
+
+# export LESSOPEN="|$HOMEBREW_PREFIX/bin/lesspipe.sh %s"
+export LESSOPEN='|~/.zsh-config-settings/config/lessfilter.sh %s'
+export LESSCOLORIZER='bat --theme="Catppuccin Mocha"'
+fpath=(~/zsh_functions $fpath)
