@@ -4,11 +4,13 @@ if [ -x "$(command -v eza)" ]; then
   alias la="eza -al --color=always --icons=always"
 fi
 
+
 # fnm -- Node.js version manager
 export ZSH_FNM_INSTALL_DIR="$HOME/.fnm"
 export ZSH_FNM_ENV_EXTRA_ARGS="--use-on-cd"
 export ZSH_FNM_USE_EXTRA_ARGS="--install-if-missing"
 source ~/.zsh-config-settings/plugins/zsh-fnm-plugin.zsh
+
 
 # tmuxifier
 if [ ! -d ~/.tmuxifier ]; then
@@ -18,17 +20,21 @@ fi
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
 
+
 # fzf
 source ~/.zsh-config-settings/config/fzf.zsh
+
 
 # fzf-tab
 if [ ! -d ~/fzf-tab ]; then
   echo "Cloning fzf-tab..."
   git clone https://github.com/Aloxaf/fzf-tab ~/fzf-tab
 fi
-autoload -U compinit; compinit
+
+
 source ~/fzf-tab/fzf-tab.plugin.zsh
 source ~/.zsh-config-settings/config/fzf-tab.zsh
+
 
 # fzf-tab-sources
 if [ ! -d ~/fzf-tab-source ]; then
@@ -49,7 +55,7 @@ if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/chafa" ]; then
   brew install chafa
 fi
 
-# export LESSOPEN="|$HOMEBREW_PREFIX/bin/lesspipe.sh %s"
+
 export LESSOPEN='|~/.zsh-config-settings/config/lessfilter.sh %s'
 export LESSCOLORIZER='bat --theme="Catppuccin Mocha"'
 fpath=(~/zsh_functions $fpath)
