@@ -11,9 +11,15 @@ export HOMEBREW_BAT=true
 # LLM models
 export GEMINI_API_KEY=
 
+# weather api for tmux
+export OPEN_WEATHER_API_KEY=
 
 # set default editor
 export EDITOR='/usr/local/bin/nvim'
+# export VISUAL="nvr --remote-wait +'set bufhidden=wipe'"
+
+# set xdg paths
+export XDG_CONFIG_HOME="$HOME/.config"
 
 
 # python support
