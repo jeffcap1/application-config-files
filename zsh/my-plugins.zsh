@@ -55,6 +55,14 @@ if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/chafa" ]; then
   brew install chafa
 fi
 
+# carapace
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/carapace" ]; then
+  brew install carapace
+fi
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
 
 export LESSOPEN='|~/.zsh-config-settings/config/lessfilter.sh %s'
 export LESSCOLORIZER='bat --theme="Catppuccin Mocha"'
