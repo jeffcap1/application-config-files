@@ -55,10 +55,16 @@ if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/chafa" ]; then
   brew install chafa
 fi
 
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/vivid" ]; then
+  brew install vivid
+fi
+
 # carapace
 if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/carapace" ]; then
   brew install carapace
 fi
+
+export LS_COLORS=$(vivid generate catppuccin-mocha)
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
