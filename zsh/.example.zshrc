@@ -71,16 +71,14 @@ export PATH="$HOME/.pyenv/bin:$HOME/bin:$HOME/.local/bin:/usr/local/sbin:$PATH"
 #   chmod -R go-w '/opt/homebrew/share/zsh'
 
 
-
-
-# include plugins and plugin settings
-source ~/.zsh-config-settings/my-plugins.zsh
-
 # Initialize completion system only if it's not already initialized
 if [[ -z ${_compconfig+x} ]]; then
   autoload -U +X compinit && compinit
   autoload -U +X bashcompinit && bashcompinit
 fi
+
+# include plugins and plugin settings
+source ~/.zsh-config-settings/my-plugins.zsh
 
 # plugins using completions
 source ~/.zsh-config-settings/plugins/omz-directories.zsh
