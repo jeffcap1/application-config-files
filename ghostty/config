@@ -1,0 +1,26 @@
+# theme
+theme = catppuccin-mocha
+window-colorspace = display-p3
+
+# background
+background-opacity = 0.75
+background-blur-radius = 20
+
+# cursor
+cursor-style = bar
+cursor-style-blink = true
+
+# font
+font-family = Maple Mono
+font-size =
+adjust-cell-height = 5
+
+# window
+macos-titlebar-style = hidden
+window-decoration = true
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+
+# keybindings
+macos-option-as-alt = true
