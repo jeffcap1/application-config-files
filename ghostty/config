@@ -14,6 +14,7 @@ cursor-style-blink = true
 font-family = Maple Mono
 font-size =
 adjust-cell-height = 5
+bold-is-bright = true
 
 # window
 macos-titlebar-style = hidden
@@ -21,6 +22,10 @@ window-decoration = true
 window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
+
+# general
+quit-after-last-window-closed = true
+auto-update = off
 
 # keybindings
 macos-option-as-alt = true
