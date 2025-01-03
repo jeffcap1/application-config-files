@@ -60,15 +60,16 @@ if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/vivid" ]; then
 fi
 
 # carapace
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/carapace" ]; then
-  brew install carapace
-fi
+# if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/carapace" ]; then
+#   brew install carapace
+# fi
 
-export LS_COLORS=$(vivid generate catppuccin-mocha)
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
-
+# export LS_COLORS=$(vivid generate catppuccin-mocha)
+# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# export CARAPACE_ENV=1
+# export CARAPACE_HIDDEN=1
+# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+# source <(carapace _carapace)
 
 export LESSOPEN='|~/.zsh-config-settings/config/lessfilter.sh %s'
 export LESSCOLORIZER='bat --theme="Catppuccin Mocha"'
