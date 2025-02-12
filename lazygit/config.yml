@@ -2,7 +2,7 @@ os:
   editPreset: "nvim-remote"
 customCommands:
   - key: "C"
-    command: "git cz c"
+    command: "~/.config/lazygit/commit-with-env.sh"
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
