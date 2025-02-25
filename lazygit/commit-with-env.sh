@@ -3,11 +3,9 @@
 if [ -f "pyproject.toml" ]; then
   # Python project
   if command -v poetry &> /dev/null; then
-    poetry shell && cz commit
+    poetry run cz commit
   elif command -v conda &> /dev/null; then
-    # You might need to determine the environment name dynamically
-    # For example, from a .env file or project configuration
-    conda activate my-project-env && cz commit
+    conda run -n my-project-env cz commit
   else
     echo "No Python environment manager found (poetry or conda)."
     exit 1
