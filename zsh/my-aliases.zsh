@@ -13,6 +13,7 @@ alias p="pnpm"
 
 alias gt="git tag -l | sort -Vr | head -n 10"
 alias gtf="git tag -l | sort -Vr"
+alias gtc="git tag -l | sort -Vr | head -n 1 | tr -d '\n' | pbcopy"
 
 # tmux
 alias ta='tmux attach -t'
