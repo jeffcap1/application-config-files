@@ -29,4 +29,4 @@ auto-update = off
 
 # keybindings
 macos-option-as-alt = true
-keybind = global:ctrl+grave_accent=toggle_quick_terminal
+keybind = global:ctrl+super+grave_accent=toggle_quick_terminal
