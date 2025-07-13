@@ -30,8 +30,6 @@ if [ ! -d ~/fzf-tab ]; then
   echo "Cloning fzf-tab..."
   git clone https://github.com/Aloxaf/fzf-tab ~/fzf-tab
 fi
-
-
 source ~/fzf-tab/fzf-tab.plugin.zsh
 source ~/.zsh-config-settings/config/fzf-tab.zsh
 
@@ -59,18 +57,22 @@ if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/vivid" ]; then
   brew install vivid
 fi
 
-# carapace
-# if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/carapace" ]; then
-#   brew install carapace
-# fi
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/csvkit" ]; then
+  brew install csvkit
+fi
 
-# export LS_COLORS=$(vivid generate catppuccin-mocha)
-# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-# export CARAPACE_ENV=1
-# export CARAPACE_HIDDEN=1
-# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-# source <(carapace _carapace)
+# carapace - tab completions for cli tools
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/carapace" ]; then
+  brew install carapace
+fi
 
-export LESSOPEN='|~/.zsh-config-settings/config/lessfilter.sh %s'
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+export CARAPACE_ENV=1      # Whether to register get-env, set-env and unset-env functions.
+export CARAPACE_HIDDEN=1   # Whether to show hidden commands/flags.
+export CARAPACE_MATCH=1    # Whether to match case insensitive.
+export LS_COLORS=$(vivid generate catppuccin-mocha) # Set color scheme
+source <(carapace _carapace)
+
 export LESSCOLORIZER='bat --theme="Catppuccin Mocha"'
 fpath=(~/zsh_functions $fpath)

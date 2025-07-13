@@ -1,3 +1,5 @@
+# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 
@@ -23,7 +25,11 @@ zstyle ':fzf-tab:*' fzf-min-height 50
 zstyle ':fzf-tab:*' popup-min-size 50 8
 
 # completion styles for different commands
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+# zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+zstyle ':fzf-tab:complete:*:*' fzf-preview '' # hide preview
+zstyle ':fzf-tab:complete:*:options' fzf-preview
+zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
+# export LESSOPEN='|~/.zsh-config-settings/config/lessfilter.sh %s'
 
 # completion styles for different commands
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
@@ -31,7 +37,9 @@ zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' 
 zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
 # zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
 #   ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
-#
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
 
 # Use TMUX popup
-# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
