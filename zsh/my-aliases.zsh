@@ -8,7 +8,6 @@ alias gpat="git pull --all --tags"
 alias addkey='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
 alias vi="nvim"
 alias ff="fastfetch"
-alias lg="lazygit"
 alias p="pnpm"
 
 alias gt="git tag -l | sort -Vr | head -n 10"

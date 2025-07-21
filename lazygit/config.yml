@@ -30,3 +30,5 @@ gui:
     activeBorderColor:
       - "#fab387"
       - "bold"
+git:
+  parseEmoji: true

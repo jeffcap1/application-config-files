@@ -20,6 +20,10 @@ fi
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
 
+# Ensure Lazygit is installed
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/lazygit" ]; then
+  brew install lazygit
+fi
 
 # fzf
 source ~/.zsh-config-settings/config/fzf.zsh
