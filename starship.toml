@@ -169,6 +169,9 @@ symbol = "󰅟 "
 format = 'on [$symbol($profile )(\[$duration\] )]($style)'
 # format = '[[ on $symbol($profile )(\($region\) )(\[$duration\] )](fg:mantle bg:purple)]($style)'
 
+[gcloud]
+symbol = "️ "
+
 [package]
 style = "bg:purple"
 symbol = "󰓹 "
