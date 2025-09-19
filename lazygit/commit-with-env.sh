@@ -2,7 +2,9 @@
 
 if [ -f "pyproject.toml" ]; then
   # Python project
-  if command -v poetry &> /dev/null; then
+  if command -v uv &> /dev/null; then
+    uvx --from commitizen cz commit
+  elif command -v poetry &> /dev/null; then
     poetry run cz commit
   elif command -v conda &> /dev/null; then
     conda run -n my-project-env cz commit
