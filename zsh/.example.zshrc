@@ -8,6 +8,11 @@ fi
 export HOMEBREW_GITHUB_API_TOKEN=
 export HOMEBREW_BAT=true
 
+# set cache directory
+ZSH_CACHE_DIR="$HOME/.zsh-cache"
+mkdir -p "$ZSH_CACHE_DIR/completions"
+FPATH="$ZSH_CACHE_DIR/completions:${FPATH}"
+
 # LLM models
 export GEMINI_API_KEY=
 

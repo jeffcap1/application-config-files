@@ -11,6 +11,12 @@ export ZSH_FNM_ENV_EXTRA_ARGS="--use-on-cd"
 export ZSH_FNM_USE_EXTRA_ARGS="--install-if-missing"
 source ~/.zsh-config-settings/plugins/zsh-fnm-plugin.zsh
 
+# uv -- Python package and project manager
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/uv" ]; then
+  brew install uv
+fi
+source ~/.zsh-config-settings/plugins/omz-uv-plugin.zsh
+
 
 # tmuxifier
 if [ ! -d ~/.tmuxifier ]; then
