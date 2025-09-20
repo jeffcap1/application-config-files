@@ -1,10 +1,15 @@
 # theme
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 window-colorspace = display-p3
 
 # background
 background-opacity = 0.95
 background-blur-radius = 20
+
+# background image
+background-image = ~/.config/ghostty/art/batman-sm.jpg
+background-image-opacity = 0.2
+background-image-fit = cover
 
 # cursor
 cursor-style = bar
@@ -30,3 +35,4 @@ auto-update = off
 # keybindings
 macos-option-as-alt = true
 keybind = global:ctrl+super+grave_accent=toggle_quick_terminal
+
