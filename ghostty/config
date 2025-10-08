@@ -7,8 +7,10 @@ background-opacity = 0.95
 background-blur-radius = 20
 
 # background image
-background-image = ~/.config/ghostty/art/batman-sm.jpg
-background-image-opacity = 0.2
+# background-image = ~/.config/ghostty/art/batman-sm.jpg
+# background-image = ~/.config/ghostty/art/spiderman.jpg
+background-image = ~/.config/ghostty/art/master-sword-botw.jpg
+background-image-opacity = 0.1
 background-image-fit = cover
 
 # cursor
