@@ -1,0 +1,13 @@
+[user]
+	name = Jeff Capone
+	email = jeffcap1@gmail.com
+[init]
+	defaultbranch = main
+[rerere]
+	enabled = true
+[alias]
+	clean-gone = !git fetch -p && git branch -vv | awk \"/: gone]/{print \\$1}\" | xargs git branch -d
+	clean-gone-force = !git fetch -p && git branch -vv | awk \"/: gone]/{print \\$1}\" | xargs git branch -D
+	clean-gone-check = !git fetch -p && git branch -vv | awk \"/: gone]/{print \\$1}\"
+[pull]
+	rebase = true

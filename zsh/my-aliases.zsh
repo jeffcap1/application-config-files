@@ -11,9 +11,15 @@ alias ff="fastfetch"
 alias p="pnpm"
 alias k="kubectl"
 
+# git - tag helpers
 alias gt="git tag -l | sort -Vr | head -n 10"
 alias gtf="git tag -l | sort -Vr"
 alias gtc="git tag -l | sort -Vr | head -n 1 | tr -d '\n' | pbcopy"
+
+# git - cleanup loacl branches
+alias gbc="git clean-gone"
+alias gbcf="git clean-gone-force"
+alias gbcc="git clean-gone-check"
 
 # tmux
 alias ta='tmux attach -t'
