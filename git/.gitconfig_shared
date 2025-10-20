@@ -11,3 +11,5 @@
 	clean-gone-check = !git fetch -p && git branch -vv | awk \"/: gone]/{print \\$1}\"
 [pull]
 	rebase = true
+[rebase]
+  updateRefs = true
