@@ -47,6 +47,30 @@
                         "vendor_id": 5426
                     },
                     "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 4423,
+                        "vendor_id": 10462
+                    },
+                    "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 53288,
+                        "vendor_id": 13364
+                    },
+                    "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "device_address": "c4-06-bb-e4-16-30",
+                        "is_keyboard": true,
+                        "is_pointing_device": true
+                    },
+                    "ignore": false
                 }
             ],
             "name": "Default profile",
