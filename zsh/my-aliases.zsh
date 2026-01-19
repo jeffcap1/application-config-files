@@ -10,6 +10,7 @@ alias vi="nvim"
 alias ff="fastfetch"
 alias p="pnpm"
 alias k="kubectl"
+alias oc='opencode'
 
 # git - tag helpers
 alias gt="git tag -l | sort -Vr | head -n 10"
