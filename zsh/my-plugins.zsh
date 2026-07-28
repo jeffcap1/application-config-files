@@ -51,6 +51,11 @@ if [ ! -d ~/fzf-tab-source ]; then
 fi
 source ~/fzf-tab-source/*.plugin.zsh
 
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/atuin" ]; then
+  brew install atuin
+fi
+eval "$(atuin init zsh --disable-up-arrow)"
+
 if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/lesspipe" ]; then
   brew install lesspipe
 fi

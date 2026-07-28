@@ -20,12 +20,15 @@ export FZF_COMPLETION_OPTS="--height 40% --layout reverse --info inline --border
 
 # CTRL-/ to toggle small preview window to see the full command
 # CTRL-Y to copy the command into clipboard using pbcopy
-export FZF_CTRL_R_OPTS=" \
-  --preview 'echo {}' --preview-window up:3:hidden:wrap \
-  --bind 'ctrl-/:toggle-preview' \
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' \
-  --color header:italic \
-  --header 'Press CTRL-Y to copy command into clipboard'"
+
+# disabling for atuin's history search
+export FZF_CTRL_R_COMMAND=''
+# export FZF_CTRL_R_OPTS=" \
+#   --preview 'echo {}' --preview-window up:3:hidden:wrap \
+#   --bind 'ctrl-/:toggle-preview' \
+#   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' \
+#   --color header:italic \
+#   --header 'Press CTRL-Y to copy command into clipboard'"
 
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
