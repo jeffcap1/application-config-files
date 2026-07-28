@@ -56,6 +56,11 @@ if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/atuin" ]; then
 fi
 eval "$(atuin init zsh --disable-up-arrow)"
 
+if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/wtp" ]; then
+  brew install satococoa/tap/wtp
+fi
+eval "$(wtp shell-init zsh)"
+
 if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/lesspipe" ]; then
   brew install lesspipe
 fi
