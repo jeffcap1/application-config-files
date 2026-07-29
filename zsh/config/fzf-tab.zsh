@@ -12,6 +12,9 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
+# Prevent ../ and other path prefixes from pre-filtering results
+zstyle ':fzf-tab:*' query-string first
+
 # set key bindings
 zstyle ':fzf-tab:complete:*' fzf-bindings \
   'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' \
