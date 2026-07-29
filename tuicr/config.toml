@@ -1,0 +1,7 @@
+theme = "catppuccin-mocha"
+cursor_line = true
+transparent_background = true
+
+diff_view = "side-by-side"
+comment_vim = true
+
