@@ -1,98 +1,120 @@
 # Eza
-if [ -x "$(command -v eza)" ]; then
+if (( $+commands[eza] )); then
   alias ls="eza --color=always --icons=always"
   alias la="eza -al --color=always --icons=always"
 fi
 
 
-# fnm -- Node.js version manager
-export ZSH_FNM_INSTALL_DIR="$HOME/.fnm"
-export ZSH_FNM_ENV_EXTRA_ARGS="--use-on-cd"
-export ZSH_FNM_USE_EXTRA_ARGS="--install-if-missing"
-source ~/.zsh-config-settings/plugins/zsh-fnm-plugin.zsh
-
 # uv -- Python package and project manager
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/uv" ]; then
-  brew install uv
+if [[ -r "$HOME/.zsh-config-settings/plugins/omz-uv-plugin.zsh" ]]; then
+  source "$HOME/.zsh-config-settings/plugins/omz-uv-plugin.zsh"
 fi
-source ~/.zsh-config-settings/plugins/omz-uv-plugin.zsh
+
+
+# fnm -- Node.js version manager
+# export ZSH_FNM_INSTALL_DIR="$HOME/.fnm"
+# export ZSH_FNM_ENV_EXTRA_ARGS="--use-on-cd"
+# export ZSH_FNM_USE_EXTRA_ARGS="--install-if-missing"
+# source ~/.zsh-config-settings/plugins/zsh-fnm-plugin.zsh
 
 
 # tmuxifier
-if [ ! -d ~/.tmuxifier ]; then
-  echo "Cloning tmuxifier..."
-  git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
-fi
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-eval "$(tmuxifier init -)"
+if [[ -d "$HOME/.tmuxifier" ]]; then
+  path=("$HOME/.tmuxifier/bin" $path)
 
-# Ensure Lazygit is installed
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/lazygit" ]; then
-  brew install lazygit
+  if (( $+commands[tmuxifier] )); then
+    eval "$(tmuxifier init -)"
+  fi
 fi
 
-# fzf
-source ~/.zsh-config-settings/config/fzf.zsh
 
+# -------------------------------------------------------------------
+# fzf base integration
+#
+# Load before fzf-tab.
+# -------------------------------------------------------------------
 
-# fzf-tab
-if [ ! -d ~/fzf-tab ]; then
-  echo "Cloning fzf-tab..."
-  git clone https://github.com/Aloxaf/fzf-tab ~/fzf-tab
-fi
-source ~/fzf-tab/fzf-tab.plugin.zsh
-source ~/.zsh-config-settings/config/fzf-tab.zsh
-
-
-# fzf-tab-sources
-if [ ! -d ~/fzf-tab-source ]; then
-  echo "Cloning fzf-tab-sources..."
-  git clone https://github.com/Freed-Wu/fzf-tab-source ~/fzf-tab-source
-fi
-source ~/fzf-tab-source/*.plugin.zsh
-
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/atuin" ]; then
-  brew install atuin
-fi
-eval "$(atuin init zsh --disable-up-arrow)"
-
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/wtp" ]; then
-  brew install satococoa/tap/wtp
-fi
-eval "$(wtp shell-init zsh)"
-
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/lesspipe" ]; then
-  brew install lesspipe
+if [[ -r "$HOME/.zsh-config-settings/config/fzf.zsh" ]]; then
+  source "$HOME/.zsh-config-settings/config/fzf.zsh"
 fi
 
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/exiftool" ]; then
-  brew install exiftool
+
+# Atuin
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/chafa" ]; then
-  brew install chafa
+
+# -------------------------------------------------------------------
+# Carapace
+#
+# Load before other completion plugins to ensure it is registered globally.
+# -------------------------------------------------------------------
+
+if (( $+commands[carapace] )); then
+  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+
+  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+  export CARAPACE_ENV=1
+  export CARAPACE_HIDDEN=1
+  export CARAPACE_MATCH=1
+
+  source <(carapace _carapace zsh)
 fi
 
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/vivid" ]; then
-  brew install vivid
-fi
 
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/csvkit" ]; then
-  brew install csvkit
-fi
+# -------------------------------------------------------------------
+# Colors
+# -------------------------------------------------------------------
 
-# carapace - tab completions for cli tools
-if type brew &>/dev/null && [ ! -d "$HOMEBREW_CELLAR/carapace" ]; then
-  brew install carapace
+if (( $+commands[vivid] )); then
+  export LS_COLORS="$(vivid generate catppuccin-mocha)"
 fi
-
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-export CARAPACE_ENV=1      # Whether to register get-env, set-env and unset-env functions.
-export CARAPACE_HIDDEN=1   # Whether to show hidden commands/flags.
-export CARAPACE_MATCH=1    # Whether to match case insensitive.
-export LS_COLORS=$(vivid generate catppuccin-mocha) # Set color scheme
-source <(carapace _carapace)
 
 export LESSCOLORIZER='bat --theme="Catppuccin Mocha"'
-fpath=(~/zsh_functions $fpath)
+
+
+# -------------------------------------------------------------------
+# WTP
+#
+# This must come after global Carapace registration.
+# Use the real binary path rather than a possible shell wrapper.
+# -------------------------------------------------------------------
+
+if [[ -x /opt/homebrew/bin/wtp ]]; then
+  eval "$(/opt/homebrew/bin/wtp shell-init zsh)"
+elif (( $+commands[wtp] )); then
+  eval "$(command wtp shell-init zsh)"
+fi
+
+
+# -------------------------------------------------------------------
+# fzf-tab sources
+#
+# Load supporting sources before the main fzf-tab plugin unless their
+# documentation explicitly requires otherwise.
+# -------------------------------------------------------------------
+
+if [[ -d "$HOME/fzf-tab-source" ]]; then
+  for plugin_file in "$HOME"/fzf-tab-source/*.plugin.zsh(N); do
+    source "$plugin_file"
+  done
+
+  unset plugin_file
+fi
+
+
+# -------------------------------------------------------------------
+# fzf-tab
+#
+# Keep this near the end so it is the final plugin wrapping Tab.
+# -------------------------------------------------------------------
+
+if [[ -r "$HOME/fzf-tab/fzf-tab.plugin.zsh" ]]; then
+  source "$HOME/fzf-tab/fzf-tab.plugin.zsh"
+fi
+
+if [[ -r "$HOME/.zsh-config-settings/config/fzf-tab.zsh" ]]; then
+  source "$HOME/.zsh-config-settings/config/fzf-tab.zsh"
+fi
+
