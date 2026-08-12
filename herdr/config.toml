@@ -94,7 +94,15 @@ type = "popup"
 command = "lazygit"
 width = "90%"
 height = "90%"
-description = "Open lazygit in a popup"
+description = "Open LazyGit"
+
+[[keys.command]]
+key = "prefix+;"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+width = "80%"
+height = "80%"
 
 [[keys.command]]
 key = "alt+h"
@@ -247,7 +255,7 @@ sidebar_collapsed_mode = "hidden"
 # herdr = show in-app toasts
 # terminal = ask the outer terminal to show a desktop notification
 # system = ask the OS notification service directly
-# delivery = "off"
+delivery = "system"
 # delay_seconds = 1
 
 [ui.toast.herdr]
@@ -259,7 +267,7 @@ sidebar_collapsed_mode = "hidden"
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
-# enabled = true
+enabled = false
 # Optional custom mp3 sound files. Relative paths are resolved from this config file's directory.
 # path = "sounds/notification.mp3"   # one mp3 file for all sound notifications
 # done_path = "sounds/done.mp3"      # overrides only finished notifications
@@ -291,7 +299,7 @@ sidebar_collapsed_mode = "hidden"
 # allow_nested = false
 # Experimental local Kitty graphics rendering for attached clients.
 # Requires a Kitty graphics-compatible outer terminal.
-# kitty_graphics = false
+kitty_graphics = true
 # Save recent pane screen history across full server restarts.
 pane_history = false
 # While prefix mode is active, temporarily switch the macOS host input
