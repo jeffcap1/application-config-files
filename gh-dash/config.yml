@@ -1,0 +1,129 @@
+# yaml-language-server: $schema=https://gh-dash.dev/schema.json
+prSections:
+  - title: Project Pull Requests
+    filters: is:open draft:false review:required
+    type: null
+  - title: My Pull Requests
+    filters: is:open author:@me
+    type: null
+  - title: Needs My Review
+    filters: is:open review-requested:@me
+    type: null
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+    type: null
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me
+  - title: Assigned
+    filters: is:open assignee:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+repo:
+  branchesRefetchIntervalSeconds: 30
+  prsRefetchIntervalSeconds: 60
+defaults:
+  preview:
+    open: true
+    width: 50
+  prsLimit: 20
+  prApproveComment: LGTM
+  issuesLimit: 20
+  view: prs
+  layout:
+    prs:
+      updatedAt:
+        width: 5
+      createdAt:
+        width: 5
+      repo:
+        width: 20
+      author:
+        width: 15
+      authorIcon:
+        hidden: false
+      assignees:
+        width: 20
+        hidden: true
+      base:
+        width: 15
+        hidden: true
+      lines:
+        width: 15
+    issues:
+      updatedAt:
+        width: 5
+      createdAt:
+        width: 5
+      repo:
+        width: 15
+      creator:
+        width: 10
+      creatorIcon:
+        hidden: false
+      assignees:
+        width: 20
+        hidden: true
+  refetchIntervalMinutes: 30
+keybindings:
+  keybindings:
+  issues: []
+  prs:
+    - key: a
+      name: disabled — assign
+      command: "true"
+
+    - key: A
+      name: disabled — unassign
+      command: "true"
+
+    - key: m
+      name: disabled — merge
+      command: "true"
+
+    - key: x
+      name: disabled — close
+      command: "true"
+
+    - key: X
+      name: disabled — reopen
+      command: "true"
+
+    - key: C
+      name: code review
+      command: |
+        set -eu
+
+        tab_json="$(herdr tab create \
+          --workspace "$HERDR_WORKSPACE_ID" \
+          --cwd "{{.RepoPath}}" \
+          --label "PR #{{.PrNumber}}" \
+          --focus)"
+
+        pane_id="$(printf '%s' "$tab_json" |
+          jq -er '.result.root_pane.pane_id')"
+
+        herdr pane run "$pane_id" "tuicr pr {{.PrNumber}}"
+
+    - key: N
+      name: review PR in Neovim
+      command: >
+        tmux new-window
+        -c "{{.RepoPath}}"
+        -n "PR-{{.PrNumber}}"
+        "tmux set-option -w remain-on-exit off &&
+        exec nvim -c 'PRReviewNumber {{.PrNumber}}'"
+
+  branches: []
+repoPaths: {}
+theme:
+  ui:
+    sectionsShowCount: true
+    table:
+      showSeparator: true
+      compact: false
+pager:
+  diff: delta
+confirmQuit: false
+showAuthorIcons: true
+smartFilteringAtLaunch: true
