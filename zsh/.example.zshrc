@@ -35,8 +35,8 @@ export OPEN_WEATHER_API_KEY=
 export AWS_PROFILE_STATE_ENABLED=true
 export HOMEBREW_BAT=true
 
-export EDITOR="/opt/homebrew/bin/nvim"
-export VISUAL="nvr --remote-wait +'set bufhidden=wipe'"
+export VISUAL="$HOME/.config/editor.sh"
+export EDITOR="$VISUAL"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH="$HOME/go"
