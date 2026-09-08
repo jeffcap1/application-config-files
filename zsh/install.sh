@@ -93,6 +93,7 @@ main() {
     neovim
     pyenv
     pyenv-virtualenv
+    terminal-notifier
     tmux
     uv
     vivid
@@ -134,4 +135,3 @@ main() {
 }
 
 main "$@"
-
