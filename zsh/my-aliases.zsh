@@ -6,6 +6,7 @@ alias bug="brew upgrade --greedy"
 alias sup="source ~/.zshrc"
 alias gpat="git pull --all --tags"
 alias addkey='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
+alias v="nvim"
 alias vi="nvim"
 alias ff="fastfetch"
 alias p="pnpm"
