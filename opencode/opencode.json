@@ -77,6 +77,11 @@
       "type": "remote",
       "url": "https://agent-gateway.management.in.mountain.com/mcp/code",
       "enabled": true
+    },
+    "storybook": {
+      "type": "remote",
+      "url": "http://localhost:6006/mcp",
+      "enabled": true
     }
   },
   "plugin": [
