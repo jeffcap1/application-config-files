@@ -33,8 +33,9 @@ window-padding-balance = true
 # general
 quit-after-last-window-closed = true
 auto-update = off
+link-url = true
+mouse-shift-capture = never
 
 # keybindings
 macos-option-as-alt = true
 keybind = global:ctrl+super+grave_accent=toggle_quick_terminal
-
