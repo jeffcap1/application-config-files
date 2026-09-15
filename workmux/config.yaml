@@ -1,0 +1,5 @@
+nerdfont: true
+merge_strategy: rebase
+merge_keep: true # Keep worktree, window, and branch after merge by default
+agent: opencode
+worktree_dir: <project>

@@ -97,6 +97,7 @@ main() {
     tmux
     uv
     vivid
+    workmux
     worktrunk
     zoxide
     zsh-autosuggestions

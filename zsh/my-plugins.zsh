@@ -89,6 +89,21 @@ fi
 
 
 # -------------------------------------------------------------------
+# workmux
+#
+# This must come after global Carapace registration.
+# Use the real binary path rather than a possible shell wrapper.
+# -------------------------------------------------------------------
+
+if [[ -x /opt/homebrew/bin/workmux ]]; then
+  eval "$(/opt/homebrew/bin/workmux completions zsh)"
+elif (( $+commands[workmux] )); then
+  eval "$(command workmux completions zsh)"
+fi
+
+
+
+# -------------------------------------------------------------------
 # fzf-tab sources
 #
 # Load supporting sources before the main fzf-tab plugin unless their
