@@ -1,0 +1,11 @@
+theme = "catppuccin"
+keys = "vim"
+side_pane = "library"
+library_layout = "columns"
+
+cover_mode = "kitty"
+visualizer_mode = "off"
+
+volume_max = 130.0
+autoplay_radio = false
+save_repeat_shuffle = true
