@@ -39,3 +39,6 @@ mouse-shift-capture = never
 # keybindings
 macos-option-as-alt = true
 keybind = global:ctrl+super+grave_accent=toggle_quick_terminal
+
+# shaders
+custom-shader = shaders/cursor_tail.glsl
