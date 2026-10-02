@@ -1,5 +1,7 @@
 nerdfont: true
 merge_strategy: rebase
 merge_keep: true # Keep worktree, window, and branch after merge by default
+worktree_dir: ..
+worktree_naming: basename # Use only the part after the last /
 agent: opencode
-worktree_dir: <project>
+mode: session
