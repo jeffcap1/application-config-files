@@ -6,10 +6,8 @@ window-colorspace = display-p3
 background-opacity = 0.95
 background-blur-radius = 20
 
-# background image
-# background-image = ~/.config/ghostty/art/batman-sm.jpg
-# background-image = ~/.config/ghostty/art/spiderman.jpg
-background-image = ~/.config/ghostty/art/master-sword-botw.jpg
+# background image (randomized per launch by random-bg.zsh -> bg.conf)
+config-file = ?bg.conf
 background-image-opacity = 0.1
 background-image-fit = cover
 

@@ -14,3 +14,6 @@ setopt hist_find_no_dups
 # Completion style
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# Ghostty: roll a new random background image for the next launch
+[[ $TERM_PROGRAM == ghostty && -x ~/.config/ghostty/random-bg.zsh ]] && ~/.config/ghostty/random-bg.zsh &!
