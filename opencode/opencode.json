@@ -54,28 +54,13 @@
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
       "headers": {
-        "CONTEXT7_API_KEY": "$CONTEXT7_API_KEY"
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
       },
       "enabled": true
     },
     "chrome-devtools": {
       "type": "local",
       "command": ["zsh", "-lc", "npx -y chrome-devtools-mcp@latest"],
-      "enabled": true
-    },
-    "mntn-devops": {
-      "type": "remote",
-      "url": "https://mcp.prod.in.mountain.com",
-      "enabled": false
-    },
-    "mntn-devops-nonprod": {
-      "type": "remote",
-      "url": "https://mcp.nonprod.in.mountain.com",
-      "enabled": false
-    },
-    "atlas-code": {
-      "type": "remote",
-      "url": "https://agent-gateway.management.in.mountain.com/mcp/code",
       "enabled": true
     },
     "storybook": {

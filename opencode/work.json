@@ -1,0 +1,37 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "mntn-devops": {
+      "type": "remote",
+      "url": "https://mcp.prod.in.mountain.com",
+      "enabled": false
+    },
+    "mntn-devops-nonprod": {
+      "type": "remote",
+      "url": "https://mcp.nonprod.in.mountain.com",
+      "enabled": false
+    },
+    "atlas-code": {
+      "type": "remote",
+      "url": "https://agent-gateway.management.in.mountain.com/mcp/code",
+      "enabled": true
+    },
+    "jira": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "-e",
+        "JIRA_URL",
+        "-e",
+        "JIRA_USERNAME",
+        "-e",
+        "JIRA_API_TOKEN",
+        "ghcr.io/sooperset/mcp-atlassian:latest"
+      ],
+      "enabled": true
+    }
+  }
+}
