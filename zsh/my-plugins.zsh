@@ -60,6 +60,17 @@ if (( $+commands[carapace] )); then
   export CARAPACE_MATCH=1
 
   source <(carapace _carapace zsh)
+
+  # Workaround: carapace escapes values for `_describe` (`\` -> `\\`, `:` -> `\:`).
+  # Plain zsh copes, but fzf-tab re-inserts the raw match via `compadd -Q`,
+  # turning `persona\ prs/` into `persona\\ prs/`. Undo that escaping only
+  # while fzf-tab is completing. https://github.com/carapace-sh/carapace/issues/1207
+  if (( $+functions[_carapace_completer] )); then
+    functions[_carapace_completer]=${functions[_carapace_completer]/'[[ ${#valuesArr'/'(( IN_FZF_TAB )) && valuesArr=("${(@)valuesArr//(#b)\\([\\:])/$match[1]}")
+		[[ ${#valuesArr'}
+    functions[_carapace_completer]="setopt localoptions extendedglob
+${functions[_carapace_completer]}"
+  fi
 fi
 
 
