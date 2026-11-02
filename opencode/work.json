@@ -17,20 +17,9 @@
         "url": "https://agent-gateway.management.in.mountain.com/mcp/code"
       },
       "jira": {
-        "type": "local",
-        "command": [
-          "docker",
-          "run",
-          "--rm",
-          "-i",
-          "-e",
-          "JIRA_URL",
-          "-e",
-          "JIRA_USERNAME",
-          "-e",
-          "JIRA_API_TOKEN",
-          "ghcr.io/sooperset/mcp-atlassian:latest"
-        ]
+        "type": "remote",
+        "url": "http://127.0.0.1:9000/mcp",
+        "oauth": false
       }
     }
   }
