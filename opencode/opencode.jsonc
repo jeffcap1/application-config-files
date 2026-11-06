@@ -49,38 +49,42 @@
     { "action": "shell", "resource": "gh pr reviews *", "effect": "allow" },
     { "action": "shell", "resource": "gh run view *", "effect": "allow" },
     { "action": "shell", "resource": "gh stack view *", "effect": "allow" },
-    { "action": "shell", "resource": "gh api repos/SteelHouse/mntn-nova/pulls/*", "effect": "allow" },
+    {
+      "action": "shell",
+      "resource": "gh api repos/SteelHouse/mntn-nova/pulls/*",
+      "effect": "allow",
+    },
     { "action": "shell", "resource": "gh api * -f *", "effect": "ask" },
     { "action": "shell", "resource": "gh api * -F *", "effect": "ask" },
     { "action": "shell", "resource": "gh api *--field *", "effect": "ask" },
     { "action": "shell", "resource": "gh api *--raw-field *", "effect": "ask" },
     { "action": "shell", "resource": "gh api *--input *", "effect": "ask" },
     { "action": "shell", "resource": "gh api *-X *", "effect": "ask" },
-    { "action": "shell", "resource": "gh api *--method *", "effect": "ask" }
+    { "action": "shell", "resource": "gh api *--method *", "effect": "ask" },
   ],
   // Hard denies: project config and saved "Allow always" approvals cannot override these.
   "policies": [
-    { "action": "tool.use", "resource": "shell:rm *", "effect": "deny" }
+    { "action": "tool.use", "resource": "shell:rm *", "effect": "deny" },
   ],
   "providers": {
     "ollama": {
       "package": "aisdk:@ai-sdk/openai-compatible",
       "name": "Ollama (local)",
       "settings": {
-        "baseURL": "http://localhost:11434/v1"
+        "baseURL": "http://localhost:11434/v1",
       },
       "models": {
         "llama3.1:8b": {
-          "name": "Llama3.1"
+          "name": "Llama3.1",
         },
         "qwen2.5-coder:32b": {
-          "name": "Qwen 2.5 Coder"
+          "name": "Qwen 2.5 Coder",
         },
         "mistral-nemo": {
-          "name": "Mistral Nemo"
-        }
-      }
-    }
+          "name": "Mistral Nemo",
+        },
+      },
+    },
   },
   "mcp": {
     "servers": {
@@ -88,23 +92,22 @@
         "type": "remote",
         "url": "https://mcp.context7.com/mcp",
         "headers": {
-          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-        }
+          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}",
+        },
       },
       "chrome-devtools": {
         "type": "local",
-        "command": ["zsh", "-lc", "npx -y chrome-devtools-mcp@latest"]
+        "command": ["zsh", "-lc", "npx -y chrome-devtools-mcp@latest"],
       },
       "storybook": {
         "type": "remote",
-        "url": "http://localhost:6006/mcp"
-      }
-    }
+        "url": "http://localhost:6006/mcp",
+        "disabled": true,
+      },
+    },
   },
-  "plugins": [
-    "superpowers@git+https://github.com/obra/superpowers.git"
-  ],
+  "plugins": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "experimental": {
-    "todo": true
-  }
+    "todo": true,
+  },
 }
